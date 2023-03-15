@@ -33,16 +33,23 @@
         To transfer the points to the global score, hold down the <strong>X key,</strong> then pass the hand to another player.<br> Be careful, if the die falls on 1, you will see your points disappear in the current score and pass your turn.
       </p>
     </div>
+    <div class="container bottom">
+      <button type="button" class="butn" 
+          onClick="editNames()">
+          Edit Names
+      </button>
+  </div>
    </section>
     <section class="container-md">
+      <h1 class="message"></h1>
     <div class="row align-self-center">
-        <div class="col-sm-4">
-          <p class="text-player1" id="namePlayer1">player 1</p>
-          <span class="number-play1" id="numberPlay1">0</span> 
+        <div class="col-sm-4" id="playerNumber-1 active">
+          <p class="player1" > player 1</p>
+          <span class="number-player1" id="score-1">20</span>
           <div class="row">
             <div class="current1">
               <p class="text-current1">Current</p>
-              <span class="number-current1" id="numberCurrent1">11</span>
+              <span class="number-current1 " id="currentScore-1">12</span>
             </div>
           </div>
         </div>
@@ -52,25 +59,25 @@
         
           
           <div class="dices">
-              <img class="newdice" id="dice0" src="image/dice1.png" alt="dice1" data-rondom="">
+              <img  src="image/dice1.png" class= "diceImage"alt="Dice picture"/>
             </div>
            
           <div class="row">
         
         <div class="col-sm-4" >
-              <button type="button" onclick="rollTheDice()" id="rollDice1">Roll dice</button>
-              <button type="button" onclick="hold() " id="hold1">Hold</button>
+              <button type="button" class="rollDice" id="rollBtn">Roll dice</button>
+              <button type="button" class="btn-hold" id="hold">Hold</button>
           </div>
           </div>
       </div>
-      <section class="col-sm-4" >
-          <p class="text-player2" id="namePlayer2">player 2</p>
-          <span class="number-play2" id="numberPlay2">0</span>
+      <section class="col-sm-4" id="playerNumber-2 active">
+          <p class="player2">player 2</p>
+          <span class="number-player2" id="score-2">70</span>
 
           <div class="row">
             <div class="current2">
               <p class="text-current2">Current</p>
-              <span class="number-current2" id="numberCurrent2">11</span>
+              <span class="number-current2" id="currentScore-2">11</span>
             </div>
           </div>
       </div> 

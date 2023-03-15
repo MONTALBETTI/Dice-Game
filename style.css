@@ -51,8 +51,8 @@ background: #af3b2e;
 #gameRule{
     background-color: rgba(9,81,121,1);
     /*display: none;*/
-    height: 230px;
-    width: 55%;
+    height: 200px;
+    width: 35%;
     border-radius: 8px;
     
 }
@@ -66,6 +66,7 @@ h2{
     color: white;
     font-size: 12px;
     text-align: justify;
+    margin-top: 10px;
 }
 
 /*Player 1,2*/
@@ -76,8 +77,8 @@ h2{
     
 }
 
-.text-player1,
-.text-player2 {
+.player1,
+.player2 {
    /* border: 1px solid red;*/
     font-size: 25px;
     line-height: 58px;
@@ -87,19 +88,19 @@ h2{
 
 
 }
-.name-player2,
-.number-play2,
+.player2,
+.number-player2,
 .number-current2{
 color: #030303;
 }
 
 
-.number-play1,
-.number-play2{
+.number-player1,
+.number-player2{
     color: white;
-    font-size: 20px;
+    font-size: 40px;
     margin-top:10px;
-    text-align: center;
+  
 
 }
 .current1,
@@ -119,8 +120,8 @@ color: #030303;
 }
 /*Rolldice*/
 .new-game,
-#rollDice1,
-#hold1{
+#rollBtn,
+#hold{
     color: white;
     text-transform: uppercase;
     border-radius: 8px;
@@ -130,8 +131,8 @@ color: #030303;
     background: #af3b2e;
     
  }
- #rollDice1,
- #hold1{
+ #rollBtn,
+ #hold{
     display: block;
  }
 
@@ -141,8 +142,9 @@ color: #030303;
     place-items: center;
 
 }
-#dice0{
-    height: 50px; 
+#dicePicture{
+    height: 70px; 
+    margin: 10px 10px;
 }
   @media screen and (max-width: 576px) {  
     #btn1{
