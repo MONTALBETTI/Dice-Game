@@ -1,19 +1,71 @@
-// variables Current score
-const player2Score = document.querySelector("#currentScore2");
-// Get button 
-const newGameBtn = document.querySelector("#newGame");
+//get access the global score
+const score1 = document.querySelector('#score-1');
+const score2 = document.querySelector('#score-2');
+//Get rollDice btn 
 const rollBtn = document.querySelector("#rollBtn");
-const startBtn = document.querySelector("#startBtn");
-const holdBtn = document.querySelector("#hold");
-
-
+const holdBtn= document.querySelector("#hold");
 // Get image 
 const diceImage = document.querySelector(".diceImage");
+const current1 = document.getElementById('current-1');
+//players 
+const player1 = document.querySelector('#player--1');
+const player2 = document.querySelector('#player--2');
 
-// others variables
-let activePlayer;
-let roundScore, scores;//current; 
+//const current2 = document.getElementById('current-2');
 
+//init the values to zero
+score1.textContent = 0;
+score2.textContent = 0;
+diceImage.classList.add('hidden');
+
+let scores = [0,0];
+let current = 0;
+let activePlayer = 1;
+
+// Next player
+const nextPlayer = function () {
+    current = 0; 
+    //reset currunt score for zero
+    document.querySelector(`#current-${activePlayer}`).textContent =current;
+    // change player
+    activePlayer = activePlayer == 1 ? activePlayer = 2 : activePlayer = 1;
+    //active player / remove player or add player
+    player1.classList.toggle('player-active')
+    player2.classList.toggle('player-active')
+  }
+
+// functionnality for rollDice btn
+
+rollBtn.addEventListener('click', function () {
+// 1.Generate a random numeber [1,6],
+  const diceRandom = Math.floor(Math.random() * 6) + 1;
+  console.log(diceRandom)
+//display a random number on the dice image
+    diceImage.classList.remove('hidden');
+    diceImage.src = 'image/dice' + diceRandom + '.png';
+//add it to the active player's current score, if the random number is not 1,
+  if (diceRandom != 1) {
+    current = current + diceRandom;
+    document.querySelector(`#current-${activePlayer}`).textContent = current;
+  } else {
+    nextPlayer()
+    // if the diceRandom = 1, the player will lose all his scores and it will be a next player
+  }
+});
+// functionnality for holdBtn
+holdBtn.addEventListener('click', () => {
+  //add the current score to the global score
+  scores[activePlayer] = scores[activePlayer] + current;
+  document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
+  //if a player reaches the maximum(100pts) score wins
+  if (scores[activePlayer] >= 100) {
+    // endgame
+    document.querySelector(`.player--${activePlayer}`).classList.add('.player-winner');
+    document.querySelector(`#name--${activePlayer}`).textContent = ('Winner');
+  } else {
+    nextPlayer();
+  }
+ })
 
 
 // show and hide game rules
@@ -26,62 +78,11 @@ rules.addEventListener("click", () => {
     gameRule.style.display = "block";
   }
 })
-
- // Function to change the player name
- 
 function editNames() {
   
-    let player1 = prompt("Change Player1 name");
-    let player2 = prompt("Change player2 name");
+  let player1 = prompt("Change Player1 name");
+  let player2 = prompt("Change player2 name");
 
-    document.querySelector("p.player1").innerHTML = player1;
-    document.querySelector("p.player2").innerHTML = player2;
-  }
- // init  player 
-   play()
- function play() {
-    activePlayer= 0;
-    roundScore = 0;
-    scores = [0, 0];
-    
-   
-   document.querySelector('p.player1').textContent = 'player1';
-   document.querySelector('#score-1').textContent = '0';
-   document.querySelector('#currentScore-1').textContent = '0';
-   
-
-   document.querySelector('.player2').textContent = 'player2'; 
-   document.querySelector('#score-2').textContent = '0';
-   document.querySelector('#currentScore-2').textContent = '0';
-   
-   //document.querySelector('.playerNumber-1').classList.add('active');
-  // document.querySelector('.playerNumber-2').classList.remove('active');
+  document.querySelector(".player1").innerHTML = player1;
+  document.querySelector(".player2").innerHTML = player2;
 }
-rollBtn.addEventListener('click', function () {
-  // 1.Create a random number
-  const diceRandom = Math.floor(Math.random() * 6) + 1;
-  diceImage.style.display = 'block'
-  diceImage.src = 'image/dice' + diceRandom + '.png';
-  //2.play the sound plug
-  const audio = new Audio("image/bruit-de-dés.mp3");
-  //3.When the soundtrack is loaded, lace the sound
-  audio.addEventListener("canplaythrough", function () {
-    audio.play()
-  })
-   // 4.if the diceRandom = 1, the player will lose all his scores and it will be a next player
-  if (diceRandom !== 1) {
-      roundScore = roundScore + diceRandom;
-    document.getElementById("currentScore-"+activePlayer).textContent = roundScore;// erreur 
-
-  } else {
-    console.log('next players move');
-  }
-  })
-//function nextPlay() {
-  
-//}
-
-    
-
-
-
