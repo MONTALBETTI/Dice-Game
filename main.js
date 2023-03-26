@@ -76,9 +76,9 @@ rollBtn.addEventListener('click', function () {
 //display a random number on the dice image
   diceImage.classList.remove('hidden');
   diceImage.src = 'image/dice' + diceRandom + '.png';
-  //jouer la bonde son
+  //play sound recording
    const audio = new Audio("image/bruit-de-dés.mp3");
-//Quand la bande son est chargée, lacer le son
+//When the soundtrack is loaded, chain the dice
  audio.addEventListener("canplaythrough", function () {
   audio.play();
  });
